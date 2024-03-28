@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+  }
+
+  .header-title {
+  display: flex;
+  justify-content: center;
+  }
+  
+  .cell {
+    border: 1px solid gray;
+    min-width: 20px;
+    min-height: 20px;
+    display: inline-block;
+    margin-top: 0px;
+    margin-right: 2px;
+    background-color: white;
+  }
+
+  .main-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  

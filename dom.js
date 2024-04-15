@@ -55,5 +55,5 @@ grid.addEventListener("mouseover", (e) => {
     square.setAttribute("class", "downed square");
     let rgbVals = randomRGB();
     var tempColor = "rgb(" + rgbVals[0] + ", " +rgbVals[1] + ", " + rgbVals[2] + ")";
-    square.style.backgroundColor = "black";
+    square.style.backgroundColor = tempColor;
 });

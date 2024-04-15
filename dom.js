@@ -1,49 +1,59 @@
 // Set important constants and variables
 
-const container = document.getElementById("container");
-let rows = document.getElementsByClassName("gridRow");
-let cells = document.getElementsByClassName("cell");
+const grid = document.querySelector(".grid");
+const button = document.querySelector("button");
+const squares = document.querySelector(".squares");
+let gridSize = 16;
 
-// Creates a default grid sized 16x16
+button.addEventListener("click", (e) => {
+    gridSize = prompt("Enter the number of rows and columns");
 
-defaultGrid();
-function defaultGrid() {
-    makeRows(16);
-    makeColumns(16);
-};
-
-// Takes (rows, columns) input and makes a grid
-makeRows();
-function makeRows(rowNum) {
-
-    // Creates rows
-    for(r = 0;  r < rowNum; r++){
-        let row = document.createElement("div");
-        container.appendChild(row).className = "gridRow";
-    };
-};
-
-
-// Creates columns
-function makeColumns(cellNum){
-    for (i = 0; i < rows.length; i++){
-        for (j = 0; j < cellNum; j++){
-            let newCell = document.createElement("div");
-            rows[j].appendChild(newCell).className = "cell";
+    if (gridSize < 100) {
+        while (grid.firstChild) {
+            grid.removeChild(grid.firstChild);
+        };
+    
+        for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize; j++) {
+                const square = document.createElement("div");
+                square.setAttribute("class", "square");
+                square.style.flexBasis = `${100 / gridSize}%`;
+                square.style.height = `${100 / gridSize}%`;
+                grid.appendChild(square);
+            };
         };
     };
+});
+
+// Default grid 16 squares per side
+
+for (let i = 0; i < 16; i++) {
+    for (let j = 0; j < 16; j++) {
+        const square = document.createElement("div");
+        square.setAttribute("class", "square");
+        grid.appendChild(square);
+    };
 };
 
-// Change color on mouseover & mouseout
+// Generates a random value between 0 and 255
+function randomNum() {
+    return Math.floor(Math.random() * 256);
+};
+
+// Returns an array of 3 values for rgb
+function randomRGB () {
+    let red = randomNum();
+    let green = randomNum();
+    let blue = randomNum();
+    return [red, green, blue];
+};
 
 
-let color = [, "#3C9EE7", "#E7993C",
-            "#E73C99", "#3CE746", "#E7993C", "#FF0000"];
- 
-document.getElementsByClassName("cell").addEventListener(
-    "mouseover", function () {
- 
-        document.getElementsByClassName("cell").style.background
-            = color[(Math.floor(Math.random() * color.length))];
-    });
-
+grid.addEventListener("mouseover", (e) => {
+    const square = e.target;
+    const array = [];
+    square.setAttribute("class", "downed square");
+    let rgbVals = randomRGB();
+    var tempColor = "rgb(" + rgbVals[0] + ", " +rgbVals[1] + ", " + rgbVals[2] + ")";
+    square.style.backgroundColor = "black";
+});

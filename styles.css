@@ -1,30 +1,55 @@
-* {
-    box-sizing: border-box;
-  }
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
 
-  .header-title {
+*, *:before, *:after {
+  box-sizing: inherit;    
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
   display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: gray;
   justify-content: center;
-  }
-  
-  .cell {
-    border: 1px solid gray;
-    min-width: 20px;
-    min-height: 20px;
-    display: inline-block;
-    margin-top: 0px;
-    margin-right: 2px;
-    background-color: white;
-  }
+  align-items: center;
+}
+.container h1 {
+  padding-bottom: 50px;
+  color:aliceblue;
+}
+.container button {
+  margin-bottom: 50px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 45vw;
+  height: 45vw;
+  background-color: aliceblue;
+}
 
-  .main-container {
-    display: flex;
-    justify-content: center;
-  }
-
-  .button-list {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 20px;
-  }
+.square {
+  flex-basis: 6.25%;
+  height: 6.25%;
+}
+.hovered {
+  background-color: gray;
+  transition: ease-in-out;
+}
